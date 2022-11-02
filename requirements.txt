@@ -9,4 +9,4 @@ Markdown==3.4.1
 pytz==2022.5
 sqlparse==0.4.3
 zipp==3.9.0
-setuptools==0.7.3
+distribute==0.6.24
