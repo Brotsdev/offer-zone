@@ -43,16 +43,18 @@ class AccountLogin(APIView):
             
             if "otp" in post_data:
                 auth_check = UserAuthKey()
-                if auth_check.validate_key(user_name):
+                if user_obj and auth_check.validate_key(user_name,post_data['otp']):
                     token, created = Token.objects.get_or_create(user=user_obj)
                     return Response({"status":status.HTTP_201_CREATED,"message":"Login Successfull.","data":{
-                        "token":token,
+                        "token":token.key,
                         "first_name":user_obj.first_name,
                         "last_name":user_obj.last_name,
                         "phone_code":user_obj.phone_code,
                         "phone_number":user_obj.phone_number,
                         "email":user_obj.email,
                     }})
+                else:
+                    return Response({"status":status.HTTP_400_BAD_REQUEST,"message":"Invalid otp or user."})
                 
             else:
                 auth_key = UserAuthKey()
