@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'user_manage',
     'phonenumber_field',
+    'app_security',
 ]
 
 MIDDLEWARE = [
@@ -81,9 +82,13 @@ WSGI_APPLICATION = 'offer_zone.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'NAME': 'offer_do',
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'broatsuser',
+        'PASSWORD': 'userbroats123',
+        'HOST': 'localhost',
+        'PORT': 5432,
+    },
 }
 
 
