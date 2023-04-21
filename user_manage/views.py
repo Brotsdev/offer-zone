@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 
 
-from dtuser_auth.models import UserAuthKey
+from app_security.models import UserAuthKey
 from .models import LoginUser
 from django.db.models import Q
 

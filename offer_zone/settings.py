@@ -147,3 +147,11 @@ REST_FRAMEWORK = {
 }
 
 DISABLE_COLLECTSTATIC=1
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "brotsdev@gmail.com"
+EMAIL_HOST_PASSWORD = "Ak@Brots@Vp@The@De@Next@123@Feature"
+DEFAULT_EMAIL_FROM = "brotsdev@gmail.com"
