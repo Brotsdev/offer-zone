@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'offer_do',
         'ENGINE': 'django.db.backends.postgresql',
         'USER': 'broatsuser',
-        'PASSWORD': 'userbroats123q',
+        'PASSWORD': 'userbroats123',
         'HOST': 'localhost',
         'PORT': 5432,
     },
