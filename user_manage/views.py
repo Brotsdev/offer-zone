@@ -78,7 +78,7 @@ class AccountSignUp(APIView):
         try:
             post_data = request.data
             
-            if "phone_number" not in post_data and not post_data['phone_number']:
+            if "phone_number" not in post_data or "phone_number" in post_data and not post_data['phone_number']:
                 return Response({"status":status.HTTP_400_BAD_REQUEST,"message":"User name key missing."})
             
             self.phone_number = post_data['phone_number']
