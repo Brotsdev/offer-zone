@@ -61,7 +61,7 @@ class AccountLogin(APIView):
                         "email":user_obj.email,
                     }})
                 else:
-                    return Response({"status":status.HTTP_400_BAD_REQUEST,"message":"Invalid otp or user."})
+                    return Response({"status":status.HTTP_400_BAD_REQUEST,"message":"Invalid OTP."})
                 
             else:
                 auth_key = UserAuthKey()
@@ -120,6 +120,7 @@ class AccountSignUp(APIView):
                             last_name = post_data['last_name'] if 'last_name' in post_data else "",
                             is_shop = post_data['is_shop'] if 'is_shop' in post_data else False,
                             is_customer = post_data['is_customer'] if 'is_customer' in post_data else False,
+                            image = post_data['image'] if 'image' in post_data else "",
                         )
                     LoginUserTemp.objects.filter(phone=self.phone_number).delete()
                     return Response({"status":status.HTTP_201_CREATED,"message":"Account Successfull Created.","data":post_data})

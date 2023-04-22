@@ -31,6 +31,7 @@ class LoginUser(AbstractUser):
     phone_code = models.CharField(max_length=4, blank=True,null=True)
     phone_number = models.CharField(null=False, blank=False, unique=True,max_length=100)
     created = models.DateTimeField(default=timezone.now)
+    image = models.CharField(max_length=100, null=False,default='')
    
     expiry_date = models.DateField(blank=True, null=True)
     is_eligible = models.SmallIntegerField(default=1,blank = True,null=True)
