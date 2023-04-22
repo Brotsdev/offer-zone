@@ -142,7 +142,8 @@ class AccountSignUp(APIView):
         try:
             if self.phone_number:
                 import phonenumbers
-                if phonenumbers.is_valid_number(self.phone_number):
+                my_number = phonenumbers.parse(self.phone_number, "IN")
+                if phonenumbers.is_valid_number(my_number):
                     return True
         except:
             pass
