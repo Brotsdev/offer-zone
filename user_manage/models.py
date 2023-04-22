@@ -6,7 +6,7 @@ import os
 from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
-# from phonenumber_field.modelfields import PhoneNumberField
+from phonenumber_field.modelfields import PhoneNumberField
 # from django.contrib.postgres.fields import JSONField
 # Create your models here.
 
@@ -34,3 +34,7 @@ class LoginUser(AbstractUser):
    
     expiry_date = models.DateField(blank=True, null=True)
     is_eligible = models.SmallIntegerField(default=1,blank = True,null=True)
+
+class LoginUserTemp(models.Model):
+    phone = PhoneNumberField(null=False, blank=False, unique=True)
+    is_verified = models.BooleanField(default=False)
