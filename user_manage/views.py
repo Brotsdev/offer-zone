@@ -106,6 +106,9 @@ class AccountSignUp(APIView):
                             is_verified=True
                         )
                         return Response({"status":status.HTTP_201_CREATED,"message":"Phonenumber Successfull Verified.","data":{}})
+                    else:
+                        return Response({"status":status.HTTP_400_BAD_REQUEST,"message":"Invalid OTP.","data":{}})
+
                 else:
                     return Response({"status":status.HTTP_400_BAD_REQUEST,"message":"Invalid otp or Phonenumber."})
                 
