@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'user_manage',
     'phonenumber_field',
     'app_security',
+    'master_app',
+    'offer_app',
+    'common_app',
 ]
 
 MIDDLEWARE = [

@@ -37,7 +37,7 @@ class UserAuthKey(models.Model):
 	def generate_token(self,user_name,*args, **kwargs):
 		UserAuthKey.objects.filter(user_name=user_name).delete()
 		self.user_name = user_name
-		self.code = random.randint(10000,99999)
+		self.code = random.randint(1000,9999)
 		self.date = datetime.datetime.now() + datetime.timedelta(minutes=10)
 		self.save()
 		try:
