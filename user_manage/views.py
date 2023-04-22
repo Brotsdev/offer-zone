@@ -82,14 +82,15 @@ class AccountSignUp(APIView):
                 return Response({"status":status.HTTP_400_BAD_REQUEST,"message":"Phone Numder key missing."})
             
             self.phone_number = post_data['phone_number']
+            validate_phone = self.phone_validate()
+            if not validate_phone:
+                return Response({"status":status.HTTP_400_BAD_REQUEST,"message":"Please enter a valid phone number."})
+            
             user_obj = LoginUser.objects.filter(Q(phone_number=self.phone_number)).first()
             if user_obj:
                 return Response({"status":"400","message":"Phone number already exist."})
             
             if process_type == "phone-check":
-                validate_phone = self.phone_validate()
-                if not validate_phone:
-                    return Response({"status":status.HTTP_400_BAD_REQUEST,"message":"Please enter a valid phone."})
 
                 auth_key = UserAuthKey()
                 auth_key.generate_token(self.phone_number)
@@ -138,8 +139,11 @@ class AccountSignUp(APIView):
         pass
 
     def phone_validate(self):
-        if self.phone_number:
-            import phonenumbers
-            if phonenumbers.is_possible_number(self.phone_number):
-                return True
+        try:
+            if self.phone_number:
+                import phonenumbers
+                if phonenumbers.is_valid_number(self.phone_number):
+                    return True
+        except:
+            pass
         return False
